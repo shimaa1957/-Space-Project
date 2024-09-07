@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head> <title>Game Time</title> <link rel="stylesheet" href="Game.css"></head>
+    <body>
+       <div class="game-container" id="game">
+        <div class="game-header">
+            <h2 id="question">Question Text</h2>
+            <ul>
+                <li>
+                    <input type="radio" name="answer" id="a" class="answer">
+                    <label for="a" id="a_text">Answer</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="b" class="answer">
+                    <label for="b" id="b_text">Answer</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="c" class="answer">
+                    <label for="c" id="c_text">Answer</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="d" class="answer">
+                    <label for="d" id="d_text">Answer</label>
+                </li>
+            </ul>
+        </div>
+
+            <button id="submit" >Submit</button>
+      
+    </div>
+</div>
+
+       <script>
+        const gameData = [
+            {
+                question: "Which the largest planet in the solar system",
+
+                a: "Earth",
+                b: "Jubiter",
+                c: "Saturn",
+                d: "Uranus",
+                correct:"b",
+            },
+            {
+                question: "Which star is White ",
+
+                a: "Sirius",
+                b: "Pullux",
+                c: "Sun",
+                d: "Uranus",
+                correct:"a",
+            },
+            {
+                question: " in Which galaxy is the palent Earth ",
+
+                a: "NGC 1569",
+                b: "MB2",
+                c: "Milky Way",
+                d: "Arp 147",
+                correct:"c",
+            },
+            {
+                question: "Hom many plents in solar system  ",
+
+                a: "1",
+                b: "3",
+                c: "2",
+                d: "8",
+                correct:"d",
+            },
+           
+        ];
+        const game= document.getElementById('game')
+        const answerEla= document.querySelectorAll('.answer')
+        const questionEl= document.getElementById('question')
+        const a_text= document.getElementById('a_text')
+        const b_text= document.getElementById('b_text')
+        const c_text= document.getElementById('c_text')
+        const d_text= document.getElementById('d_text')
+        const submitBtn=document.getElementById('submit') 
+
+         
+        let currnitGame=0
+        let point = 0 
+
+            loadGame()
+
+         function loadGame() {
+
+            deselectAnswers() 
+
+            const currnetGameData = gameData[currnitGame]
+
+            questionEl.innerText = currnetGameData.question 
+            a_text.innerText = currnetGameData.a
+            b_text.innerText = currnetGameData.b
+            c_text.innerText = currnetGameData.c
+            d_text.innerText = currnetGameData.d
+         }
+
+         function deselectAnswers(){
+            answerEla.forEach(answerEl => answerEl.checked = false)
+         }
+ 
+         function getSelected() {
+            let answer  
+            answerEla.forEach(answerEl => {
+                if(answerEl.checked){
+                    answer = answerEl.id
+                }
+            })
+            return answer 
+
+        }
+
+         submitBtn.addEventListener('click' , () =>{
+            const answer = getSelected()
+            if (answer) {
+                if (answer === gameData[currnitGame].correct ) {
+                point++ 
+            }
+            currnitGame++
+
+            if(currnitGame < gameData.length) { 
+                loadGame()
+            } else {
+                game.innerHTML = `
+                <h2> You answerd ${point}/${gameData.length} questions correctly </h2>
+
+                <button onclick=" location.reload()"> Reload</button>
+                `
+               }
+            }
+         })
+       </script>
+         <div class="btn">
+            <a href="Home.html"> Back</a>  
+        </div>
+    </body>
+</html> 
+        

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html> 
+    <head> <title> Stars</title> <link rel="stylesheet" href="Star.css"> </head>
+    <body>
+        <form method="post" name="Sub" onsubmit="return validData()">
+            <Fieldset>
+            <legend><h2>Stars History </h2></legend>
+        <table>
+            <tr>
+                <th>Rank</th> <th> The Star</th> <th>Name </th> <th>Size</th> <th> Age of Star </th>
+            </tr>
+            <tr>
+                 <td>1</td><td> <img src="img/Sun-removebg-preview.png"></td><td>Sun</td><td>1.391.400 Km</td><td> 10 billion Years approx</td>
+            </tr>
+            <tr>
+                 <td>3</td><td><img src="img/Acturus-removebg-preview.png"></td><td>Acturus</td> <td>35.000.000 Km</td><td>200 biilion Years approx</td>
+            </tr>
+            <tr>
+                 <td>4</td><td><img src="img/Sirius-A-removebg-preview.png"></td><td>Sirius</td><td>11.700 Km</td><td>166 biilion Years approx</td>
+            </tr>
+            <tr> 
+                <td>5</td> <td><img src="img/Pullux-removebg-preview.png"></td><td>Pullux</td><td>950.000.000 Km</td><td>1000 biilion Years approx</td>
+            </tr>
+        </table>
+        <h2>After See The Tabel and learn more about Stars </h2> 
+        <br><p id="S">  try Slide the slider to size of Our Star ?</p>
+        <div class="slider">
+            <input onclick="alert('Hint: answer is so small .')" type='range'min='0' max='100'  oninput="rangeValue.innerText = this.value">
+            <p id=”rangeValue”>1000.000.000Km</p>
+          </div>
+          <p id="pp"> Enter Your Name To Save For You Star !!</p>
+          <div class="b">
+         <label>Name </label>  <input id="in" type="text" name="name" >
+                 <input id="go" type="submit" value="Go">
+          </div>
+    </Fieldset>
+    </form> 
+    <div class="btn">
+        <a href="Home.html"> Back to Home</a>  
+    </div>
+    <script>
+    function validData(){
+        let Vaild = document.forms["Sub"]["name"].value;
+        if (Vaild === '') {
+            alert("Space Need You Our Star   ");
+            return false ;
+        }
+    }
+</script>
+    </body>
+</html>
